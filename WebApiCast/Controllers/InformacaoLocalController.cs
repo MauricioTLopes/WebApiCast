@@ -20,26 +20,64 @@ namespace WebApiCast.Controllers
             _configuration = configuration;
         }
 
-        [HttpGet(Name = "GetInformacaoCEP")]
-        public async Task<InformacaoLocal> GetInformacaoByCEP()
+        [HttpGet("RetornaInformacaoDoCEP01001000")]
+        public async Task<ActionResult> GetInformacaoByCEPDefault()
         {
-            var urlBase = _configuration.GetSection("MySettings").GetSection("UrlBase").Value;
-            var cepBase = "01001000";
-            
-            var client = new RestClient(urlBase);
-            var request = new RestRequest(cepBase + "/json");
-            var response = await client.GetAsync(request);
-
-            if (response.IsSuccessful)
+            try
             {
-                var content = JsonConvert.DeserializeObject<InformacaoLocal>(response.Content);
-                if (content != null)
-                    return content;
+                var urlBase = _configuration.GetSection("MySettings").GetSection("UrlBase").Value;
+                var cepBase = "01001000";
 
-                throw new Exception("Informação não encontrada!");
+                var client = new RestClient(urlBase);
+                var request = new RestRequest(cepBase + "/json");
+                var response = await client.ExecuteGetAsync(request);
+
+                if (response.IsSuccessful)
+                {
+                    var content = JsonConvert.DeserializeObject<InformacaoLocal>(response.Content);
+                    if (content != null)
+                        return Ok(content);
+
+                    return BadRequest("Informações do CEP não encontrada!");
+                }
+                else
+                    return BadRequest("CEP inválido!");
             }
-            else
-                throw new Exception("CEP não encontrado!");
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        // GET api/values
+        [HttpGet("RetornaInformacaoDoCEP{cep}")]
+        public async Task<ActionResult> GetInformacaoByCEP(string cep)
+        {
+            try
+            {
+                var urlBase = _configuration.GetSection("MySettings").GetSection("UrlBase").Value;
+
+                var client = new RestClient(urlBase);
+                var request = new RestRequest(cep + "/json");
+                var response = await client.ExecuteGetAsync(request);
+
+                if (response.IsSuccessful)
+                {
+                    var content = JsonConvert.DeserializeObject<InformacaoLocal>(response.Content);
+                    if (content != null)
+                        return Ok(content);
+
+                    return BadRequest("Informações do CEP não encontrada!");
+                }
+                else
+                    return BadRequest("CEP inválido!");
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
