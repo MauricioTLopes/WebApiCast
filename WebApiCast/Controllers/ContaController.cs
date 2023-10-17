@@ -11,10 +11,12 @@ namespace WebApiCast.Controllers
     public class ContaController : ControllerBase
     {
         private readonly IConfiguration _configuration;
+        private readonly IContaRepository _contaRepository;
 
-        public ContaController(IConfiguration configuration)
+        public ContaController(IConfiguration configuration, IContaRepository contaRepository)
         {
             _configuration = configuration;
+            _contaRepository = contaRepository; 
         }
 
         // GET: Contas/Create
@@ -27,8 +29,7 @@ namespace WebApiCast.Controllers
                 {
                     if (ModelState.IsValid)
                     {
-                        context.Add(conta);
-                        await context.SaveChangesAsync();
+                        await _contaRepository.Adicionar(conta);
                         return Ok("A conta foi cadastrada com sucesso!");
                     }
                     return BadRequest("Erro!");

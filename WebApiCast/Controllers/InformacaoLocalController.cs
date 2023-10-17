@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Runtime;
 using System.Runtime.Intrinsics.Arm;
 using System.Threading;
+using WebApiCast.Entities;
 
 namespace WebApiCast.Controllers
 {

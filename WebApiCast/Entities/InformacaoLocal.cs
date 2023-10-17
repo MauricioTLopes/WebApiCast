@@ -1,4 +1,4 @@
-namespace WebApiCast
+namespace WebApiCast.Entities
 {
     public class InformacaoLocal
     {
