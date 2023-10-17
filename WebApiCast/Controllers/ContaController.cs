@@ -54,7 +54,7 @@ namespace WebApiCast.Controllers
                 {
                     if (context.Contas == null)
                     {
-                        return NotFound();
+                        return Problem("Não há registros de contas no Banco de dados!");
                     }
 
                     try
@@ -67,7 +67,7 @@ namespace WebApiCast.Controllers
                     {
                         if (!ContaExiste(conta.Id))
                         {
-                            return NotFound();
+                            return Problem("Não há dados referente a este ID!");
                         }
                         else
                         {
@@ -104,6 +104,25 @@ namespace WebApiCast.Controllers
 
             }
 
+        }
+
+        [HttpGet("RetornarContaPorId")]
+        public async Task<IActionResult> RetornarConta(int id)
+        {
+            using (var context = new DataContext())
+            {
+                if (context.Contas == null)
+                {
+                    return Problem("Não há registros de contas no Banco de dados!");
+                }
+                var conta = await context.Contas.FindAsync(id);
+                if (conta != null)
+                {
+                    return Ok(conta);
+                }
+
+                return Problem("Não há dados referente a este ID!");
+            }
         }
 
         // GET: Contas
