@@ -9,6 +9,10 @@ namespace WebApiCast
         {
         }
 
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
+        {
+        }
+
         private static DbContextOptions GetOptions(string connectionString)
         {
             return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
