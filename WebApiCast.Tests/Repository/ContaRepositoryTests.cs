@@ -99,7 +99,7 @@ namespace WebApiCast.Tests.Context
             var contaRepository = new ContaRepository(dbContext);
 
             //Act
-            var result = contaRepository.EditarId(conta.Id);
+            var result = contaRepository.Atualizar(conta);
 
             //Assert
             result.Should().NotBeNull();

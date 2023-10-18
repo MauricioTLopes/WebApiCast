@@ -1,0 +1,31 @@
+﻿@model ContaModel
+<form method="post" asp-action="Delete">
+	<input asp-for="Id" hidden />
+	<div class="border p-3 mt-4">
+		<div class="row pb-2">
+			<h2 class="text-primary">Deletar Conta</h2>
+			<hr />
+		</div>
+		@*<div asp-validation-summary="All"></div>*@
+		<div class="mb-3">
+			<label asp-for="Nome"></label>
+			<input asp-for="Nome" disabled class="form-control" />
+
+		</div>
+		<div class="mb-3">
+			<label asp-for="Descricao"></label>
+			<input asp-for="Descricao" disabled class="form-control" />
+
+		</div>
+		<button type="submit" class="btn btn-danger" style="width:150px">Deletar</button>
+		<a asp-controller="Conta" asp-action="Index" class="btn btn-secondary" style="width:150px">
+			Voltar para Lista
+		</a>
+	</div>
+</form>
+
+@section Scripts{
+	@{
+		<partial name="_ValidationScriptsPartial" />
+	}
+}
