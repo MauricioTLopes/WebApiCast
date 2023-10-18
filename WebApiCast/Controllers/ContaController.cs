@@ -11,12 +11,10 @@ namespace WebApiCast.Controllers
     public class ContaController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IContaRepository _contaRepository;
 
-        public ContaController(IConfiguration configuration, IContaRepository contaRepository)
+        public ContaController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _contaRepository = contaRepository; 
         }
 
         // GET: Contas/Create
@@ -29,7 +27,8 @@ namespace WebApiCast.Controllers
                 {
                     if (ModelState.IsValid)
                     {
-                        await _contaRepository.Adicionar(conta);
+                        context.Add(conta);
+                        await context.SaveChangesAsync();
                         return Ok("A conta foi cadastrada com sucesso!");
                     }
                     return BadRequest("Erro!");
@@ -88,7 +87,7 @@ namespace WebApiCast.Controllers
         [HttpPost("DeletarContaPorId")]
         public async Task<IActionResult> Deletar(int id)
         {
-            using(var context = new DataContext()) 
+            using (var context = new DataContext())
             {
                 if (context.Contas == null)
                 {
@@ -139,7 +138,7 @@ namespace WebApiCast.Controllers
 
         private bool ContaExiste(int id)
         {
-            using(var context = new DataContext())
+            using (var context = new DataContext())
             {
                 return (context.Contas?.Any(e => e.Id == id)).GetValueOrDefault();
             }
