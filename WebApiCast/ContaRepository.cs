@@ -39,16 +39,20 @@ namespace WebApiCast
             return _context.SaveChanges() > 0;
         }
 
-        public async Task<bool> EditarId(int id)
+        public async Task<bool> Atualizar(Conta conta)
+        {
+            _context.Contas.Update(conta);
+
+            return _context.SaveChanges() > 0;
+        }
+
+        public Task<Conta> RetornaId(int id)
         {
             var query = from c in _context.Contas
                         where c.Id == id
                         select c;
 
-
-            _context.Contas.Update(query.First());
-
-            return _context.SaveChanges() > 0;
+            return Task.FromResult(query.First());
         }
     }
 }

@@ -8,6 +8,7 @@ namespace WebApiCast
         Task<bool> Adicionar(Conta conta);
         Task<List<Conta>> ListarTodos();
         Task<bool> DeletarId(int id);
-        Task<bool> EditarId(int id);
+		Task<bool> Atualizar(Conta conta);
+		Task<Conta> RetornaId(int id);
     }
 }
