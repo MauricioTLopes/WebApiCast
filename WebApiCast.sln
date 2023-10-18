@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiCast", "WebApiCast\WebApiCast.csproj", "{9107C3FD-EECB-4044-BBE4-594297C4039C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCast", "WebApiCast\WebApiCast.csproj", "{9107C3FD-EECB-4044-BBE4-594297C4039C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5B5DCA9D-7107-42D2-AA60-320E3FBA8C98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiCast.Tests", "WebApiCast.Tests\WebApiCast.Tests.csproj", "{E573842C-B95F-4C33-BCB0-A6AD25263D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiCastMVCRazor", "WebApiCastMVCRazor\WebApiCastMVCRazor.csproj", "{975EA47D-825F-4748-8EF8-C74C59D1BB05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +21,20 @@ Global
 		{9107C3FD-EECB-4044-BBE4-594297C4039C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9107C3FD-EECB-4044-BBE4-594297C4039C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9107C3FD-EECB-4044-BBE4-594297C4039C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E573842C-B95F-4C33-BCB0-A6AD25263D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E573842C-B95F-4C33-BCB0-A6AD25263D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E573842C-B95F-4C33-BCB0-A6AD25263D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E573842C-B95F-4C33-BCB0-A6AD25263D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{975EA47D-825F-4748-8EF8-C74C59D1BB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{975EA47D-825F-4748-8EF8-C74C59D1BB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{975EA47D-825F-4748-8EF8-C74C59D1BB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{975EA47D-825F-4748-8EF8-C74C59D1BB05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E573842C-B95F-4C33-BCB0-A6AD25263D22} = {5B5DCA9D-7107-42D2-AA60-320E3FBA8C98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {919FC45C-2EA4-465B-BDE2-C09B8E850D6C}
